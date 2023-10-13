@@ -1,39 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+
+import NewWish from "../wish/newWish";
 
 import "./pityCounter.css";
 
-const PityCounter = () => {
+const PityCounter = (props) => {
+  const [wishes, setWishes] = useState([]);
+ 
+  const addWishHandler = wish => {
+    setWishes((prevWish) => {
+      return[wish, ...wishes];
+    });
+  }
+
   return (
     <div className="pity-counter">
       <h2>Contador de Pity</h2>
-      <div className="new-wish">
-        <h3>Nova Oração:</h3>
-        <form>
-          <div>
-            <label>Nome:</label>
-            <input type="texto" />
-          </div>
-          <div>
-            <label>Estrelas</label>
-            <select required>
-              <option value="3*">3*</option>
-              <option value="4*">4*</option>
-              <option value="5*">5*</option>
-            </select>
-          </div>
-          <div>
-            <label>Data:</label>
-            <div>Data</div>
-          </div>
-          <div>
-            <label>Banner:</label>
-            <select required>
-              <option value="arma">Arma</option>
-              <option value="personagem">Personagem</option>
-              <option value="comum">Comum</option>
-            </select>
-          </div>
-        </form>
+      <div className="wish-form">
+        <NewWish onAddWish={addWishHandler} />
       </div>
       <div className="data-pity">
         <h3>Dados do Pity</h3>
@@ -46,21 +30,15 @@ const PityCounter = () => {
       <div className="history">
         <h3>Histórico de Orações:</h3>
         <table>
-            <thead>
+          <thead>
             <tr>
-                <th>Nome</th>
-                <th>Estrelas</th>
-                <th>Banner</th>
-                <th>Data</th>
+              <th>Nome</th>
+              <th>Estrelas</th>
+              <th>Banner</th>
+              <th>Data</th>
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Exemplo</td>
-              <td>Exemplo</td>
-              <td>Exemplo</td>
-              <td>Exemplo</td>
-            </tr>
+          </thead>
+          <tbody>
             <tr>
               <td>Exemplo</td>
               <td>Exemplo</td>
@@ -73,7 +51,13 @@ const PityCounter = () => {
               <td>Exemplo</td>
               <td>Exemplo</td>
             </tr>
-            </tbody>
+            <tr>
+              <td>Exemplo</td>
+              <td>Exemplo</td>
+              <td>Exemplo</td>
+              <td>Exemplo</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
