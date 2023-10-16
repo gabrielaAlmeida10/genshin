@@ -1,34 +1,67 @@
 import React, { useState } from "react";
 
 import NewWish from "../wish/newWish";
+import HistoricWish from "../wish/historicWish";
+import DataPity from "./dataPity";
 
 import "./pityCounter.css";
-import HistoricWish from "../wish/historicWish";
 
 const INITIAL_WISHES = [
   {
     id: "1",
     name: "Guia de Magia",
-    star: "4*",
-    date: new Date(2020, 7, 14),
-    banner: "",
+    star: "3*",
+    date: new Date(2023, 9, 22),
+    banner: "Personagem",
   },
-  { 
-    id: "2", 
-    title: "New TV", 
-    amount: 799.49, 
-    date: new Date(2021, 2, 12) },
+  {
+    id: "2",
+    name: "Juramento de Sargitári0",
+    star: "3*",
+    date: new Date(2023, 9, 23),
+    banner: "Personagem",
+  },
   {
     id: "3",
-    title: "Car Insurance",
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
+    name: "Espadão Sangrento",
+    star: "3*",
+    date: new Date(2023, 9, 26),
+    banner: "Personagem",
   },
   {
     id: "4",
-    title: "New Desk (Wooden)",
-    amount: 450,
-    date: new Date(2021, 5, 12),
+    name: "Arco de Corvo",
+    star: "3*",
+    date: new Date(2023, 9, 27),
+    banner: "Personagem",
+  },
+  {
+    id: "5",
+    name: "Diona",
+    star: "4*",
+    date: new Date(2023, 9, 27),
+    banner: "Personagem",
+  },
+  {
+    id: "6",
+    name: "Arco de Corvo",
+    star: "3*",
+    date: new Date(2023, 9, 27),
+    banner: "Personagem",
+  },
+  {
+    id: "7",
+    name: "Espada do Cavaleiro do Céu",
+    star: "3*",
+    date: new Date(2023, 9, 27),
+    banner: "Personagem",
+  },
+  {
+    id: "8",
+    name: "Espada do Cavaleiro do Céu",
+    star: "3*",
+    date: new Date(2023, 9, 28),
+    banner: "Personagem",
   },
 ];
 
@@ -44,16 +77,13 @@ const PityCounter = (props) => {
   return (
     <div className="pity-counter">
       <h2>Contador de Pity</h2>
-      <div className="wish-form">
-        <NewWish onAddWish={addWishHandler} />
-      </div>
-      <div className="data-pity">
-        <h3>Dados do Pity</h3>
-        <div>Pity: 60</div>
-        <div>Ultimo 5*:</div>
-        <div>Prox 5* em: </div>
-        <div>Ultimo 4*:</div>
-        <div>Prox 4* em: </div>
+      <div className="top-row">
+        <div className="wish-form">
+          <NewWish onAddWish={addWishHandler} />
+        </div>
+        <div className="data-pity">
+          <DataPity items={wishes} />
+        </div>
       </div>
       <div className="history">
         <h3>Histórico de Orações:</h3>
