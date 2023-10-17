@@ -102,30 +102,36 @@ const PityCounter = (props) => {
     pity4Stars: 0,
     pity5Stars: 0,
   });
+  const [recent4Stars, setRecent4Stars] = useState([]);
+  const [recent5Stars, setRecent5Stars] = useState([]);
 
   const addWishHandler = (wish) => {
-    // Atualize os contadores de Pity
-    if (wish.star === "4*") {
+    setWishes((prevWishes) => [wish, ...prevWishes]);
+
+    if (wish.star === "3*") {
+      setDataPity((prevDataPity) => ({
+        ...prevDataPity,
+        pity4Stars: prevDataPity.pity4Stars + 1,
+        pity5Stars: prevDataPity.pity5Stars + 1,
+      }));
+    } else if (wish.star === "4*") {
       setDataPity((prevDataPity) => ({
         ...prevDataPity,
         pity4Stars: 0,
+        pity5Stars: prevDataPity.pity5Stars + 1,
       }));
+      setRecent4Stars((prevRecent4Stars) => [wish.name, ...prevRecent4Stars.slice(0, 4)]);
     } else if (wish.star === "5*") {
       setDataPity((prevDataPity) => ({
         ...prevDataPity,
-        pity5Stars: prevDataPity.pity5Stars + 1,
+        pity5Stars: 0,
+        pity4Stars: prevDataPity.pity4Stars + 1,
       }));
       if (bannerCharacters.some((character) => character.name === wish.name)) {
-        // O personagem 5 estrelas obtido faz parte do banner
-        console.log(
-          `Você obteve o personagem do banner: ${wish.name} está garantido!`,
-        );
+        console.log(`Você obteve o personagem do banner: ${wish.name} está garantido!`);
       }
+      setRecent5Stars((prevRecent5Stars) => [wish.name, ...prevRecent5Stars.slice(0, 4)]);
     }
-
-    setWishes((prevWish) => {
-      return [wish, ...wishes];
-    });
   };
 
   return (
@@ -136,7 +142,7 @@ const PityCounter = (props) => {
           <NewWish onAddWish={addWishHandler} />
         </div>
         <div className="data-pity">
-          <DataPity dataPity={dataPity}/>
+          <DataPity dataPity={dataPity} recent4Stars={recent4Stars} recent5Stars={recent5Stars} />
         </div>
       </div>
       <div className="history">
