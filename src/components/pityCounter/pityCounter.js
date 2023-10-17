@@ -137,11 +137,11 @@ const PityCounter = (props) => {
   return (
     <div className="pity-counter">
       <h2>Contador de Pity</h2>
-      <div className="top-row">
+      <div>
         <div className="wish-form">
           <NewWish onAddWish={addWishHandler} />
         </div>
-        <div className="data-pity">
+        <div>
           <DataPity dataPity={dataPity} recent4Stars={recent4Stars} recent5Stars={recent5Stars} />
         </div>
       </div>

@@ -19,14 +19,6 @@ body {
 }
 
 
-.data-pity {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  width: 38%;
-  text-align: center;
-  min-width: 40vw;
-  gap: 10px;
-}
+
 
 

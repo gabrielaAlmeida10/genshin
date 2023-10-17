@@ -9,7 +9,7 @@ function Header() {
   return (
     <header id="main-header">
         <div className="header-content">
-            <Link to="/">
+            <Link to="/pityCounter">
               <h1>Genshin</h1>
              </Link>   
             <Link to="/pityCounter">
