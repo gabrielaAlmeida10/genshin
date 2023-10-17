@@ -5,7 +5,7 @@ import "./wishForm.css";
 const WishForm = (props) => {
   //adding props
   const [enteredName, setEnteredName] = useState("");
-  const [selectedStar, setSelectedStar] = useState("");
+  const [selectedStar, setSelectedStar] = useState("3*");
   const [enteredDate, setEnteredDate] = useState("");
   const [selectedBanner, setSelectedBanner] = useState("");
 
@@ -35,7 +35,7 @@ const WishForm = (props) => {
     console.log(wishData);
     props.onSaveWishData(wishData); //passing the data to pityCounter
     setEnteredName("");
-    setSelectedStar("");
+    setSelectedStar("3*");
     setEnteredDate("");
     setSelectedBanner("");
   };
@@ -45,18 +45,11 @@ const WishForm = (props) => {
       <h3>Nova Oração:</h3>
       <div className="wish-form__control">
         <label>Nome: </label>
-        <input 
-            type="text"
-            value={enteredName}
-            onChange={nameChangeHandler}
-         />
+        <input type="text" value={enteredName} onChange={nameChangeHandler} />
       </div>
       <div className="wish-form__control">
         <label>Estrelas: </label>
-        <select required
-            value={selectedStar}
-            onChange={starChangeHandler}
-        >
+        <select required value={selectedStar} onChange={starChangeHandler}>
           <option value="3*">⭐⭐⭐</option>
           <option value="4*">⭐⭐⭐⭐</option>
           <option value="5*">⭐⭐⭐⭐⭐</option>
@@ -64,18 +57,16 @@ const WishForm = (props) => {
       </div>
       <div className="wish-form__control">
         <label>Data: </label>
-        <input required 
-            type="date" 
-            value={enteredDate}
-            onChange={dateChangeHandler}
+        <input
+          required
+          type="date"
+          value={enteredDate}
+          onChange={dateChangeHandler}
         />
       </div>
       <div className="wish-form__control">
         <label>Banner: </label>
-        <select required
-            value={selectedBanner}
-            onChange={bannerChangeHandler}
-        >
+        <select required value={selectedBanner} onChange={bannerChangeHandler}>
           <option value="arma">Arma</option>
           <option value="personagem">Personagem</option>
           <option value="comum">Comum</option>
@@ -85,7 +76,7 @@ const WishForm = (props) => {
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button type="subimt">Add New Wish</button>
+        <button type="submit">Add New Wish</button>
       </div>
     </form>
   );

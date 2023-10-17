@@ -65,10 +65,64 @@ const INITIAL_WISHES = [
   },
 ];
 
+const bannerCharacters = [
+  {
+    id: "1",
+    name: "Dehya",
+  },
+  {
+    id: "2",
+    name: "Diluc",
+  },
+  {
+    id: "3",
+    name: "Jean",
+  },
+  {
+    id: "4",
+    name: "Keqing",
+  },
+  {
+    id: "5",
+    name: "Mona",
+  },
+  {
+    id: "6",
+    name: "Qiqi",
+  },
+  {
+    id: "7",
+    name: "Tighnari",
+  },
+];
+
 const PityCounter = (props) => {
   const [wishes, setWishes] = useState(INITIAL_WISHES);
+  const [dataPity, setDataPity] = useState({
+    pity4Stars: 0,
+    pity5Stars: 0,
+  });
 
   const addWishHandler = (wish) => {
+    // Atualize os contadores de Pity
+    if (wish.star === "4*") {
+      setDataPity((prevDataPity) => ({
+        ...prevDataPity,
+        pity4Stars: 0,
+      }));
+    } else if (wish.star === "5*") {
+      setDataPity((prevDataPity) => ({
+        ...prevDataPity,
+        pity5Stars: prevDataPity.pity5Stars + 1,
+      }));
+      if (bannerCharacters.some((character) => character.name === wish.name)) {
+        // O personagem 5 estrelas obtido faz parte do banner
+        console.log(
+          `Você obteve o personagem do banner: ${wish.name} está garantido!`,
+        );
+      }
+    }
+
     setWishes((prevWish) => {
       return [wish, ...wishes];
     });
@@ -82,7 +136,7 @@ const PityCounter = (props) => {
           <NewWish onAddWish={addWishHandler} />
         </div>
         <div className="data-pity">
-          <DataPity items={wishes} />
+          <DataPity dataPity={dataPity}/>
         </div>
       </div>
       <div className="history">
