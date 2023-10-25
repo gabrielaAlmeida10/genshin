@@ -10,28 +10,28 @@ const INITIAL_WISHES = [
   {
     id: "1",
     name: "Guia de Magia",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 22),
     banner: "Personagem",
   },
   {
     id: "2",
     name: "Juramento de Sargitári0",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 23),
     banner: "Personagem",
   },
   {
     id: "3",
     name: "Espadão Sangrento",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 26),
     banner: "Personagem",
   },
   {
     id: "4",
     name: "Arco de Corvo",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 27),
     banner: "Personagem",
   },
@@ -45,21 +45,21 @@ const INITIAL_WISHES = [
   {
     id: "6",
     name: "Arco de Corvo",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 27),
     banner: "Personagem",
   },
   {
     id: "7",
     name: "Espada do Cavaleiro do Céu",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 27),
     banner: "Personagem",
   },
   {
     id: "8",
     name: "Espada do Cavaleiro do Céu",
-    star: "3*",
+    star: "⭐⭐⭐",
     date: new Date(2023, 9, 28),
     banner: "Personagem",
   },
@@ -108,20 +108,20 @@ const PityCounter = (props) => {
   const addWishHandler = (wish) => {
     setWishes((prevWishes) => [wish, ...prevWishes]);
 
-    if (wish.star === "3*") {
+    if (wish.star === "⭐⭐⭐") {
       setDataPity((prevDataPity) => ({
         ...prevDataPity,
         pity4Stars: prevDataPity.pity4Stars + 1,
         pity5Stars: prevDataPity.pity5Stars + 1,
       }));
-    } else if (wish.star === "4*") {
+    } else if (wish.star === "⭐⭐⭐⭐") {
       setDataPity((prevDataPity) => ({
         ...prevDataPity,
         pity4Stars: 0,
         pity5Stars: prevDataPity.pity5Stars + 1,
       }));
       setRecent4Stars((prevRecent4Stars) => [wish.name, ...prevRecent4Stars.slice(0, 4)]);
-    } else if (wish.star === "5*") {
+    } else if (wish.star === "⭐⭐⭐⭐⭐") {
       setDataPity((prevDataPity) => ({
         ...prevDataPity,
         pity5Stars: 0,

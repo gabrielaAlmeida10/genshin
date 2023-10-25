@@ -50,9 +50,9 @@ const WishForm = (props) => {
       <div className="wish-form__control">
         <label>Estrelas: </label>
         <select required value={selectedStar} onChange={starChangeHandler}>
-          <option value="3*">⭐⭐⭐</option>
-          <option value="4*">⭐⭐⭐⭐</option>
-          <option value="5*">⭐⭐⭐⭐⭐</option>
+          <option value="⭐⭐⭐">⭐⭐⭐</option>
+          <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+          <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
         </select>
       </div>
       <div className="wish-form__control">

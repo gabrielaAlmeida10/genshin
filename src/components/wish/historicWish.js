@@ -14,7 +14,7 @@ const HistoricWish = (props) => {
             <th>Banner</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="stars">
           {props.items.map((wish) => (
             <tr key={wish.id}>
               <td>{wish.name}</td>
